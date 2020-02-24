@@ -9405,7 +9405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  lookSensitivity: 3
+  lookSensitivity: 2
   thrusterForce: 1300
   jointSpring: 15
   jointMaxForce: 40
@@ -9439,7 +9439,6 @@ MonoBehaviour:
   - {fileID: 4208695853442078469}
   - {fileID: 4208695853600522616}
   - {fileID: 4208695853600522617}
-  - {fileID: 114934672521688380}
   - {fileID: 566098412784994676}
   - {fileID: 6569350880859985849}
   remoteLayerName: RemoteLayer
