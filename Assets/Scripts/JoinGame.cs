@@ -42,7 +42,7 @@ public class JoinGame : MonoBehaviour
     {
         status.text = "";
 
-        if(matches == null)
+        if (matches == null)
         {
             status.text = "Couldn't get room list";
             return;
@@ -50,11 +50,24 @@ public class JoinGame : MonoBehaviour
 
         ClearRoomList();
 
-        foreach(MatchInfoSnapshot match in matches)
+        foreach (MatchInfoSnapshot match in matches)
         {
             GameObject _roomListItemGO = Instantiate(roomListItemPrefab);
             _roomListItemGO.transform.SetParent(roomListParent);
             //adding information
+
+            RoomListItem _roomListItem = _roomListItemGO.GetComponent<RoomListItem>();
+            if(_roomListItem != null)
+            {
+                _roomListItem.Setup(match, JoinRoom);
+            }
+
+            roomList.Add(_roomListItemGO);
+        }
+
+        if (roomList.Count == 0)
+        {
+            status.text = "No rooms at the moment";
         }
     }
 
@@ -66,5 +79,12 @@ public class JoinGame : MonoBehaviour
         }
 
         roomList.Clear();
+    }
+
+    public void JoinRoom(MatchInfoSnapshot _match)
+    {
+        networkManager.matchMaker.JoinMatch(_match.networkId, "", "", "", 0, 0, networkManager.OnMatchJoined);
+        ClearRoomList();
+        status.text = "Joining...";
     }
 }
