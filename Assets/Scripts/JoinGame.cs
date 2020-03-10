@@ -42,7 +42,7 @@ public class JoinGame : MonoBehaviour
     {
         status.text = "";
 
-        if (matches == null)
+        if (!success || matches == null)
         {
             status.text = "Couldn't get room list";
             return;

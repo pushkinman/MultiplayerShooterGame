@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.isOn)
+            return;
+        
         //target position for a spring
         RaycastHit _hit;
         if(Physics.Raycast(transform.position, Vector3.down, out _hit, 100f, environmentMask))
